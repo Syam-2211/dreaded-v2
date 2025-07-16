@@ -3,6 +3,7 @@ const fetch = require('node-fetch');
 const Obf = require("javascript-obfuscator");
 const { c, cpp, node, python, java } = require('compile-run');
 
+
 dreaded({
   pattern: "carbon",
   desc: "Carbon command",

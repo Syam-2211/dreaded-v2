@@ -9,11 +9,6 @@ const { exec } = require("child_process");
 const { execSync } = require('child_process');
 const axios = require('axios');
 
-
-const { execSync } = require('child_process');
-const axios = require('axios');
-const path = require('path');
-
 dreaded({
   pattern: "update",
   desc: "Restart the bot to apply latest code updates",

@@ -9,6 +9,7 @@ const { exec } = require("child_process");
 const { execSync } = require('child_process');
 const axios = require('axios');
 
+
 dreaded({
   pattern: "update",
   desc: "Restart the bot to apply latest code updates",
@@ -17,29 +18,22 @@ dreaded({
 }, async (context) => {
   await ownerMiddleware(context, async () => {
     const { m } = context;
-    const repo = "Fortunatusmokaya/dreaded-v2";
-    const botPath = path.join(__dirname, '..'); 
 
-    try {
-      const localCommit = execSync('git rev-parse HEAD', { cwd: botPath }).toString().trim();
+    await m.reply("♻️ Bot is restarting with the latest code...");
 
-      const res = await axios.get(`https://api.github.com/repos/${repo}/commits/main`);
-      const latestCommit = res.data.sha;
-
-      if (localCommit === latestCommit) {
-        await m.reply("✅ You're already running the latest version of DREADED-V2.");
-      } else {
-        await m.reply("♻️ New version available! Restarting to apply update...");
-        process.exit();
+    
+    exec('node index.js', (err, stdout, stderr) => {
+      if (err) {
+        console.error("❌ Failed to restart loader:", err);
+        return;
       }
-    } catch (err) {
-      console.error("⚠️ Update check failed:", err.message);
-      await m.reply("⚠️ Could not check for update. Restarting just in case...");
-      process.exit();
-    }
+      console.log("✅ Loader restarted");
+    });
+
+ 
+    process.exit(0);
   });
 });
-
 
 dreaded({
   pattern: "restart",

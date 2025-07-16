@@ -83,8 +83,7 @@ function loadCommands(cmdsDir) {
         Object.values(commands)
             .map(cmd => cmd?.config?.category || 'Uncategorized')
     );
-    console.log(`✅ Registered ${commandCount} commands in ${uniqueCategories.size} categories`);
-}
+    
 
 const cmdsDir = path.join(__dirname, '..', 'Cmds');
 loadCommands(cmdsDir);

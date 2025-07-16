@@ -30,12 +30,15 @@ dreaded({
         await m.reply("✅ You're already running the latest version of DREADED-V2.");
       } else {
         await m.reply("♻️ New version available! Restarting to apply update...");
-        process.exit(0);
+        
+setTimeout(() => process.exit(0), 2000);
       }
     } catch (err) {
       console.error("❗ Update check failed:", err.message);
       await m.reply("❗ Could not check for update. Restarting anyways...");
-      process.exit(0);
+setTimeout(() => process.exit(0), 2000);
+      
+
     }
   });
 });
@@ -49,7 +52,7 @@ dreaded({
   await ownerMiddleware(context, async () => {
     const { m } = context;
     await m.reply("🔄 Restarting bot...");
-    process.exit(0); 
+    setTimeout(() => process.exit(0), 2000); 
   });
 });
 

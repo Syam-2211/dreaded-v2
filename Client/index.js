@@ -134,7 +134,7 @@ client.ev.on("connection.update", async (update) => {
             console.log(`Group participants updated: ${event.id}`);
             const metadata = await client.groupMetadata(event.id);
             groupCache.set(event.id, metadata);
-            console.log(`Updated cached metadata for group: ${event.id}`);
+            
             
             
             groupEvents(client, event);

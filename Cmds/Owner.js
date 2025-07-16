@@ -52,7 +52,7 @@ dreaded({
   await ownerMiddleware(context, async () => {
     const { m } = context;
     await m.reply("🔄 Restarting bot...");
-    setTimeout(() => process.exit(0), 2000); 
+    setTimeout(() => process.exit(1), 2000); 
   });
 });
 

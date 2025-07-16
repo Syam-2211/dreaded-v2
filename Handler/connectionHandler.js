@@ -85,7 +85,7 @@ const connectionHandler = async (client, update, startDreaded) => {
     if (database) {
       console.log("📈 Connecting to PostgreSQL database...");
       try {
-        await connectToDB?.(); 
+        
         console.log("📉 Connected to PostgreSQL database.");
       } catch (error) {
         console.error("Error connecting to PostgreSQL:", error.message);
@@ -99,9 +99,9 @@ const connectionHandler = async (client, update, startDreaded) => {
     
     if (groupCache) {
       try {
-        console.log("🗂️ Caching group metadata...");
+      
         const groups = await client.groupFetchAllParticipating();
-        console.log(`📋 Found ${Object.keys(groups).length} groups to cache...`);
+       
         
         for (const [jid, groupInfo] of Object.entries(groups)) {
           groupCache.set(jid, groupInfo);

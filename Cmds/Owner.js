@@ -4,16 +4,7 @@ const { S_WHATSAPP_NET } = require('@whiskeysockets/baileys');
 const fs = require("fs");
 const path = require("path");
 const { exec } = require("child_process");
-
-
-
-const { execSync } = require('child_process');
 const axios = require('axios');
-const path = require('path');
-
-const { execSync } = require('child_process');
-const axios = require('axios');
-const path = require('path');
 
 dreaded({
   pattern: "update",

@@ -103,7 +103,7 @@ const defaultGroupSettings = {
     gcpresence: 'false',    
     antiforeign: 'true',   
     antidemote: 'false',      
-    antipromote: 'true',
+    antipromote: 'false',
     events: 'false',
     antilink: 'true'
 };

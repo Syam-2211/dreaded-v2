@@ -1,8 +1,11 @@
 const fs = require('fs');
 const path = require('path');
+
+const cmdsDir = path.join(__dirname, '..', 'Cmds');
 const commands = {};
 const aliases = {};
 let totalCommands = 0;
+
 const defaultReactions = ['🔥', '💯', '⚡', '👀', '✅', '✨', '😎', '🧠'];
 
 function dreaded(config, handler) {
@@ -15,10 +18,7 @@ function dreaded(config, handler) {
         filename = ""
     } = config;
 
-    if (!pattern || typeof handler !== 'function') {
-        
-        return;
-    }
+    if (!pattern || typeof handler !== 'function') return;
 
     const name = pattern.toLowerCase();
 
@@ -36,10 +36,7 @@ function dreaded(config, handler) {
         if (m?.key && client?.sendMessage && emoji) {
             try {
                 await client.sendMessage(m.chat, {
-                    react: {
-                        text: emoji,
-                        key: m.key
-                    }
+                    react: { text: emoji, key: m.key }
                 });
             } catch (err) {
                 console.warn(`[WARN] Failed to send reaction for ${name}:`, err.message);
@@ -50,13 +47,8 @@ function dreaded(config, handler) {
     }, { config });
 
     commands[name] = wrapped;
-
-    alias.forEach(a => {
-        aliases[a.toLowerCase()] = name;
-    });
-
+    alias.forEach(a => aliases[a.toLowerCase()] = name);
     totalCommands++;
-   
 }
 
 global.commands = commands;
@@ -77,17 +69,13 @@ function loadCommands(cmdsDir) {
         }
     });
 
-    
     const commandCount = Object.keys(commands).length;
     const uniqueCategories = new Set(
-        Object.values(commands)
-            .map(cmd => cmd?.config?.category || 'Uncategorized')
+        Object.values(commands).map(cmd => cmd?.config?.category || 'Uncategorized')
     );
-    
+}
 
-const cmdsDir = path.join(__dirname, '..', 'Cmds');
 loadCommands(cmdsDir);
-
 
 module.exports = {
     commands,

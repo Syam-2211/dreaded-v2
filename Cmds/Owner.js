@@ -5,6 +5,35 @@ const fs = require("fs");
 const path = require("path");
 const { exec } = require("child_process");
 
+
+
+dreaded({
+  pattern: "update",
+  desc: "Restart the bot to apply latest code updates",
+  category: "Owner",
+  filename: __filename
+}, async (context) => {
+  await ownerMiddleware(context, async () => {
+    const { m } = context;
+    await m.reply("♻️ Bot is getting updated with latest changes...");
+    process.exit();
+  });
+});
+
+
+dreaded({
+  pattern: "restart",
+  desc: "Restart the bot manually",
+  category: "Owner",
+  filename: __filename
+}, async (context) => {
+  await ownerMiddleware(context, async () => {
+    const { m } = context;
+    await m.reply("🔄 Restarting bot...");
+    process.exit(); 
+  });
+});
+
 dreaded({
   pattern: "block",
   desc: "Block command",

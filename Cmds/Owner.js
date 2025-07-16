@@ -172,7 +172,7 @@ alias: ["evaluate"],
 }, async (context) => {
   
   
-      
+      await ownerMiddleware(context, async () => {
   
   
     const { 
@@ -207,7 +207,9 @@ alias: ["evaluate"],
     } catch (err) {
       await m.reply("Error during eval execution:\n" + String(err));
     }
+})
 });
+
 
 
 dreaded({
